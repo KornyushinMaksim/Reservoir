@@ -7,11 +7,11 @@ class Reservoir
 {
 	char* name;
 	char* type;
-	float width;//ширина
-	float length;// длина
-	float depth;// глубина
+	int width;//ширина
+	int length;// длина
+	int depth;// глубина
 public:
-	Reservoir(const char* name, const char* type, float width, float length, float depth)
+	Reservoir(const char* name, const char* type, int width, int length, int depth)
 	{
 		if (name) {
 			this->name = new char[strlen(name) + 1];
@@ -43,12 +43,13 @@ public:
 
 	char* get_name() { return this->name; }
 
-	float volume();
-	float square();
+	int volume();
+	int square();
 	bool operator-(Reservoir& reservoir);
 	string operator/(Reservoir& reservoir);
 	Reservoir& operator=(const Reservoir& reservoir);
 	string print();
+	string short_print();
 
 	~Reservoir()
 	{

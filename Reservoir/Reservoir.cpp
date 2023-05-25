@@ -34,9 +34,9 @@ int func_enter_num() {
 Reservoir enter_reservoir() {
 	char name[40];
 	char* type{ nullptr };
-	float width;
-	float length;
-	float depth;
+	int width;
+	int length;
+	int depth;
 	cin.get();
 	cout << "Название: ";
 	cin.getline(name, 40);
@@ -58,11 +58,11 @@ Reservoir enter_reservoir() {
 		type = new char[strlen(str) + 1];
 		strcpy_s(type, strlen(str) + 1, str);
 	}
-	cout << "Ширина водоёма: ";
+	cout << "Ширина водоёма (м): ";
 	cin >> width;
-	cout << "Длина водоёма: ";
+	cout << "Длина водоёма (м): ";
 	cin >> length;
-	cout << "Глубина водоёма: ";
+	cout << "Глубина водоёма (м): ";
 	cin >> depth;
 	return Reservoir (name, type, width, length, depth);
 }
@@ -81,9 +81,12 @@ void func_interface(Data_base& data) {
 			data.del_reservoir(func_enter_num());
 				break;
 		case 3:
+			cout << data.short_print_data() << endl;
+			data.add_reservoir(data.copy_reservoir(func_enter_num()));
 			break;
 		case 4:
-			if (data.comparison(func_enter_num(), func_enter_num())) {
+			cout << data.short_print_data() << endl;
+			if (data.compare(func_enter_num(), func_enter_num())) {
 				cout << "Водоёмы одного типа" << endl;
 			}
 			else {
@@ -91,8 +94,11 @@ void func_interface(Data_base& data) {
 			}
 			break;
 		case 5:
+			cout << data.short_print_data() << endl;
+			data.compare_square(func_enter_num(), func_enter_num());
 			break;
 		case 6:
+			cout << data.print_data();
 			break;
 		case 7:
 			flag = false;

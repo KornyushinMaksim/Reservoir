@@ -134,6 +134,10 @@
   <ItemGroup>
     <ClInclude Include="Data.h" />
     <ClInclude Include="Reserv.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Reservoir.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

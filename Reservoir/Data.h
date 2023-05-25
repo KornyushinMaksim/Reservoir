@@ -23,9 +23,12 @@ public:
 
 	void add_reservoir(Reservoir reservoir);
 	void del_reservoir(int index);
-	bool comparison(int num1, int num2);
+	Reservoir copy_reservoir(int num);
+	bool compare(int num1, int num2);
+	string compare_square(int num1, int num2);
 
 	string print_data();
+	string short_print_data();
 
 	~Data_base()
 	{

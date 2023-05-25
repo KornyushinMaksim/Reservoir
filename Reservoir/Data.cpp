@@ -34,7 +34,19 @@ void Data_base::del_reservoir(int num)
 	data = new_data;
 	size--;
 }
-bool Data_base::comparison(int num1, int num2)
+
+Reservoir Data_base::copy_reservoir(int num)
+{
+	Reservoir new_obj;
+	for (int i = 0; i < size; i++) {
+		if (i == num - 1) {
+			new_obj = data[i];
+		}
+	}
+	return new_obj;
+}
+
+bool Data_base::compare(int num1, int num2)
 {
 	Reservoir obj1;
 	Reservoir obj2;
@@ -49,13 +61,36 @@ bool Data_base::comparison(int num1, int num2)
 	return obj1 - obj2;
 }
 
+string Data_base::compare_square(int num1, int num2)
+{
+	Reservoir obj1, obj2;
+	for (int i = 0; i < size; i++) {
+		if (i == num1) {
+			obj1 = data[i];
+		}
+		if (i == num2) {
+			obj2 = data[i];
+		}
+	}
+
+	return obj1/obj2;
+}
+
 string Data_base::print_data()
 {
 	string s = "";
 	for (int i = 0; i < size; i++) {
 		s.append(data[i].print());
-		s.append("\n");
+		s.append("-----\n");
 	}
-	s.append("\n");
+	return s;
+}
+
+string Data_base::short_print_data()
+{
+	string s = "";
+	for (int i = 0; i < size; i++) {
+		s.append(data[i].short_print());
+	}
 	return s;
 }

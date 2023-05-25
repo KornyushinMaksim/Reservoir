@@ -1,11 +1,11 @@
 #include "Reserv.h"
 
-float Reservoir::volume()
+int Reservoir::volume()
 {
 	return this->width * this->length * this->depth;
 }
 
-float Reservoir::square()
+int Reservoir::square()
 {
 	return this->width * this->length;
 }
@@ -19,7 +19,7 @@ bool Reservoir::operator-(Reservoir& reservoir)
 
 string Reservoir::operator/(Reservoir& reservoir)
 {
-	if (strstr(this->type, reservoir.type)) {
+	if (*this - reservoir) {
 		if (this->square() > reservoir.square()) {
 			return this->print();
 		}
@@ -57,10 +57,25 @@ string Reservoir::print()
 	s.append(this->type);
 	s.append(")\nширина ");
 	s.append(to_string(this->width));
-	s.append("\nдлина ");
+	//s.append(to_string(this->width));
+	s.append(" м\nдлина ");
 	s.append(to_string(this->length));
-	s.append("\nглубина ");
+	s.append(" м\nглубина ");
 	s.append(to_string(this->depth));
-	s.append("\n");
+	s.append(" м\nплощадь ");
+	s.append(to_string(this->square()));
+	s.append(" м2\nобъём ");
+	s.append(to_string(this->volume()));
+	s.append(" м3\n");
+	return s;
+}
+
+string Reservoir::short_print()
+{
+	string s = "";
+	s.append(this->name);
+	s.append(" (");
+	s.append(this->type);
+	s.append(")\n");
 	return s;
 }
